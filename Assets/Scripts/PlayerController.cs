@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 6f;
     Rigidbody2D rigidBody;
 
+    public LayerMask groundMask;
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -20,7 +22,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             Jump();
         }
@@ -28,6 +30,14 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        rigidBody.AddForce(Vector2.up*jumpForce, ForceMode2D.Impulse);
+        if (isTouchingTheGround())
+        {
+            rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+
+    bool isTouchingTheGround()
+    {
+        return Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask);
     }
 }
