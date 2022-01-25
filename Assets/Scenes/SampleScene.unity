@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782823e6494faa9488cc4235ba700823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 11
+  jumpForce: 27
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -233,6 +233,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1470713313, guid: 8acf7035e4d524548b7d40be694813a0, type: 3}
+      propertyPath: m_Mass
+      value: 3.13069
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470713313, guid: 8acf7035e4d524548b7d40be694813a0, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1095095165959483672, guid: 8acf7035e4d524548b7d40be694813a0,
         type: 3}
       propertyPath: m_Name

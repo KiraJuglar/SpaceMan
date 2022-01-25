@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
+        Debug.DrawRay(this.transform.position, Vector2.down*1.5f, Color.red);
     }
 
     void Jump()
