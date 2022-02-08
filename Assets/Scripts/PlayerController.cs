@@ -31,13 +31,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if(GameManager.sharedInstance.currentGameState == gameState.inGame)
+            Move();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Jump") && GameManager.sharedInstance.currentGameState == gameState.inGame)
         {
             Jump();
         }

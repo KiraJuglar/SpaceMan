@@ -30,22 +30,25 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartGame();
+        }
     }
 
     public void StartGame()
     {
-
+        SetGameState(gameState.inGame);
     }
 
     public void GameOver()
     {
-
+        SetGameState(gameState.gameOver);
     }
 
     public void GameMenu()
     {
-
+        SetGameState(gameState.menu);
     }
 
     void SetGameState(gameState newGameState)
