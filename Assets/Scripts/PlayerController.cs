@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidBody; 
     public LayerMask groundMask; //Variable que identifica los objetos que pertenecen a la capa de suelo
     Animator animator;
+    Vector3 initialPosition;
 
     private void Awake()
     {
@@ -25,8 +26,17 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator.SetBool(IS_ALIVE, true);   
-        animator.SetBool(IS_ON_THE_GROUND, true);   
+        ;
+        initialPosition = this.transform.position;
+    }
+    
+    public void StartGame()
+    {
+        animator.SetBool(IS_ALIVE, true);
+        animator.SetBool(IS_ON_THE_GROUND, true);
+        this.transform.position = initialPosition;
+        this.rigidBody.velocity = Vector2.zero;
+
     }
 
     private void FixedUpdate()
@@ -72,5 +82,11 @@ public class PlayerController : MonoBehaviour
     bool isTouchingTheGround()
     {
         return Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask);
+    }
+
+    public void Die()
+    {
+        animator.SetBool(IS_ALIVE, false);
+        GameManager.sharedInstance.GameOver();
     }
 }
