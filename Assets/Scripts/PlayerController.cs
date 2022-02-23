@@ -34,9 +34,15 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool(IS_ALIVE, true);
         animator.SetBool(IS_ON_THE_GROUND, true);
+
+        Invoke("RestarPosition", 0.15f);
+        
+    }
+
+    void RestarPosition()
+    {
         this.transform.position = initialPosition;
         this.rigidBody.velocity = Vector2.zero;
-
     }
 
     private void FixedUpdate()
